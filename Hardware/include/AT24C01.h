@@ -37,7 +37,7 @@ Uint16  I2C_rrdy();
  *  @parameter              SlaveAddress：从机地址；  RomAddress：寄存器地址； number：写入数据的字节数；  *Wdata：写入数据的地址
  *  @return_value           状态标志
  */
-Uint16 WriteData( Uint16 SlaveAddress, Uint16 RomAddress,Uint16 number, Uint8 *Wdata);
+Uint16 WriteData( Uint16 SlaveAddress, Uint16 RomAddress,Uint16 number, Uint16 *Wdata);
 
 /**
  *  @brief                  IIC写数据
@@ -52,14 +52,14 @@ Uint16 ReadData( Uint16 SlaveAddress, Uint16 RomAddress,Uint16 number, Uint16  *
  *  @parameter              SlaveAddress：从机地址；  regaddress：寄存器地址； bitNum：某一位；  data：写入数据
  *  @return_value           无
  */
-void IICwriteBit(Uint16 slaveaddress, Uint16 regaddress, Uint8 bitNum, Uint8 data);
+void IICwriteBit(Uint16 slaveaddress, Uint16 regaddress, Uint16 bitNum, Uint16 data);
 
 /**
  *  @brief                 IIC向寄存器的某几位写数据
  *  @parameter              SlaveAddress：从机地址；  regaddress：寄存器地址； bitStart：开始位；  length：长度；data：写入数据
  *  @return_value           无
  */
-void IICwriteBits(Uint16 slaveaddress,Uint16 regaddress,Uint8 bitStart,Uint8 length,Uint8 data);
+void IICwriteBits(Uint16 slaveaddress,Uint16 regaddress,Uint16 bitStart,Uint16 length,Uint16 data);
 
 
 #endif /* HARDWARE_INCLUDE_AT24C01_H_ */

@@ -12,6 +12,7 @@
 #include <WatchDog.h>
 #include<oled.h>
 #include"DSP2833x_Project.h"
+#include<spi_o.h>
 #include<w25q64.h>
 
 
@@ -320,30 +321,57 @@ void main(void){
     //oled
 
 
-    OLED_Init();
-
-    OLED_ON();
-
-    OLED_Fill(0);
-
-    unsigned char ch[] = "1234567";
-
-    OLED_ShowStr(1,1,ch,1);
-    DELAY_US(100000);
-    OLED_ShowStr(1,2,ch,2);
+//    OLED_Init();
+//
+//    OLED_ON();
+//
+//    OLED_Fill(0);
+//
+//    unsigned char ch[] = "1234567";
+//
+//    OLED_ShowStr(1,1,ch,1);
+//    DELAY_US(100000);
+//    OLED_ShowStr(1,2,ch,2);
 
 
     //adc-DMA  Temp Lighting
 
 
 
-
-
     //spi  oled  flash
 
-    //spi_init();
+    spi_init();
+
+    WriteDataSpi(0x9090);
+
+    WriteDataSpi(0x9090);
+
+//    ReadMfrDeviceID_SPI();
+//
+//    WriteDataSpi(0x9000);
+//
+//    WriteDataSpi(0x0000);
+//
 
     //can
+//     w25q64_gpio_init();
+//
+//     SPI_Send_2Byte(0x0101);
+//     SPI_Send_2Byte(0x0101);
+//    Uint16 data;
+//    Uint16 t = 0x0101;
+//    W25Q64_PageWrite(0x00000001,&t,1);
+//
+//    W25Q64_ReadData(0x00000001,&data,1);
+
+//     while(1){
+//
+//         SPI_Send_2Byte(0x0101);
+//         SPI_Send_2Byte(0x0101);
+//
+//         DELAY_US(1000);
+//
+//     }
 
 
 

@@ -15,6 +15,7 @@ C_SRCS += \
 ../Hardware/src/led.c \
 ../Hardware/src/oled.c \
 ../Hardware/src/sci.c \
+../Hardware/src/spi_o.c \
 ../Hardware/src/timer.c \
 ../Hardware/src/w25q64.c 
 
@@ -28,6 +29,7 @@ C_DEPS += \
 ./Hardware/src/led.d \
 ./Hardware/src/oled.d \
 ./Hardware/src/sci.d \
+./Hardware/src/spi_o.d \
 ./Hardware/src/timer.d \
 ./Hardware/src/w25q64.d 
 
@@ -41,6 +43,7 @@ OBJS += \
 ./Hardware/src/led.obj \
 ./Hardware/src/oled.obj \
 ./Hardware/src/sci.obj \
+./Hardware/src/spi_o.obj \
 ./Hardware/src/timer.obj \
 ./Hardware/src/w25q64.obj 
 
@@ -54,6 +57,7 @@ OBJS__QUOTED += \
 "Hardware\src\led.obj" \
 "Hardware\src\oled.obj" \
 "Hardware\src\sci.obj" \
+"Hardware\src\spi_o.obj" \
 "Hardware\src\timer.obj" \
 "Hardware\src\w25q64.obj" 
 
@@ -67,6 +71,7 @@ C_DEPS__QUOTED += \
 "Hardware\src\led.d" \
 "Hardware\src\oled.d" \
 "Hardware\src\sci.d" \
+"Hardware\src\spi_o.d" \
 "Hardware\src\timer.d" \
 "Hardware\src\w25q64.d" 
 
@@ -80,6 +85,7 @@ C_SRCS__QUOTED += \
 "../Hardware/src/led.c" \
 "../Hardware/src/oled.c" \
 "../Hardware/src/sci.c" \
+"../Hardware/src/spi_o.c" \
 "../Hardware/src/timer.c" \
 "../Hardware/src/w25q64.c" 
 

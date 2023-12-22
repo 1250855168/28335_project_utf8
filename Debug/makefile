@@ -20,6 +20,7 @@ ORDERED_OBJS += \
 "./Hardware/src/led.obj" \
 "./Hardware/src/oled.obj" \
 "./Hardware/src/sci.obj" \
+"./Hardware/src/spi_o.obj" \
 "./Hardware/src/timer.obj" \
 "./Hardware/src/w25q64.obj" \
 "./Lib/src/DSP2833x_ADC_cal.obj" \
@@ -184,8 +185,8 @@ project.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main.obj" "Hardware\src\AT24C01.obj" "Hardware\src\WatchDog.obj" "Hardware\src\adc_dma.obj" "Hardware\src\button.obj" "Hardware\src\epwm_led.obj" "Hardware\src\iic.obj" "Hardware\src\led.obj" "Hardware\src\oled.obj" "Hardware\src\sci.obj" "Hardware\src\timer.obj" "Hardware\src\w25q64.obj" "Lib\src\DSP2833x_ADC_cal.obj" "Lib\src\DSP2833x_Adc.obj" "Lib\src\DSP2833x_CodeStartBranch.obj" "Lib\src\DSP2833x_CpuTimers.obj" "Lib\src\DSP2833x_DMA.obj" "Lib\src\DSP2833x_DefaultIsr.obj" "Lib\src\DSP2833x_GlobalVariableDefs.obj" "Lib\src\DSP2833x_PieCtrl.obj" "Lib\src\DSP2833x_PieVect.obj" "Lib\src\DSP2833x_SysCtrl.obj" "Lib\src\DSP2833x_Xintf.obj" "Lib\src\DSP2833x_usDelay.obj" 
-	-$(RM) "main.d" "Hardware\src\AT24C01.d" "Hardware\src\WatchDog.d" "Hardware\src\adc_dma.d" "Hardware\src\button.d" "Hardware\src\epwm_led.d" "Hardware\src\iic.d" "Hardware\src\led.d" "Hardware\src\oled.d" "Hardware\src\sci.d" "Hardware\src\timer.d" "Hardware\src\w25q64.d" "Lib\src\DSP2833x_Adc.d" "Lib\src\DSP2833x_CpuTimers.d" "Lib\src\DSP2833x_DMA.d" "Lib\src\DSP2833x_DefaultIsr.d" "Lib\src\DSP2833x_GlobalVariableDefs.d" "Lib\src\DSP2833x_PieCtrl.d" "Lib\src\DSP2833x_PieVect.d" "Lib\src\DSP2833x_SysCtrl.d" "Lib\src\DSP2833x_Xintf.d" 
+	-$(RM) "main.obj" "Hardware\src\AT24C01.obj" "Hardware\src\WatchDog.obj" "Hardware\src\adc_dma.obj" "Hardware\src\button.obj" "Hardware\src\epwm_led.obj" "Hardware\src\iic.obj" "Hardware\src\led.obj" "Hardware\src\oled.obj" "Hardware\src\sci.obj" "Hardware\src\spi_o.obj" "Hardware\src\timer.obj" "Hardware\src\w25q64.obj" "Lib\src\DSP2833x_ADC_cal.obj" "Lib\src\DSP2833x_Adc.obj" "Lib\src\DSP2833x_CodeStartBranch.obj" "Lib\src\DSP2833x_CpuTimers.obj" "Lib\src\DSP2833x_DMA.obj" "Lib\src\DSP2833x_DefaultIsr.obj" "Lib\src\DSP2833x_GlobalVariableDefs.obj" "Lib\src\DSP2833x_PieCtrl.obj" "Lib\src\DSP2833x_PieVect.obj" "Lib\src\DSP2833x_SysCtrl.obj" "Lib\src\DSP2833x_Xintf.obj" "Lib\src\DSP2833x_usDelay.obj" 
+	-$(RM) "main.d" "Hardware\src\AT24C01.d" "Hardware\src\WatchDog.d" "Hardware\src\adc_dma.d" "Hardware\src\button.d" "Hardware\src\epwm_led.d" "Hardware\src\iic.d" "Hardware\src\led.d" "Hardware\src\oled.d" "Hardware\src\sci.d" "Hardware\src\spi_o.d" "Hardware\src\timer.d" "Hardware\src\w25q64.d" "Lib\src\DSP2833x_Adc.d" "Lib\src\DSP2833x_CpuTimers.d" "Lib\src\DSP2833x_DMA.d" "Lib\src\DSP2833x_DefaultIsr.d" "Lib\src\DSP2833x_GlobalVariableDefs.d" "Lib\src\DSP2833x_PieCtrl.d" "Lib\src\DSP2833x_PieVect.d" "Lib\src\DSP2833x_SysCtrl.d" "Lib\src\DSP2833x_Xintf.d" 
 	-$(RM) "Lib\src\DSP2833x_ADC_cal.d" "Lib\src\DSP2833x_CodeStartBranch.d" "Lib\src\DSP2833x_usDelay.d" 
 	-@echo 'Finished clean'
 	-@echo ' '

@@ -115,7 +115,7 @@ Uint16  I2C_rrdy()
  *  @parameter              SlaveAddress：从机地址；  RomAddress：寄存器地址； number：写入数据的字节数；  *Wdata：写入数据的地址
  *  @return_value           状态标志
  */
-Uint16 WriteData( Uint16 SlaveAddress, Uint16 RomAddress,Uint16 number, Uint8 *Wdata)
+Uint16 WriteData( Uint16 SlaveAddress, Uint16 RomAddress,Uint16 number, Uint16 *Wdata)
 {
    Uint16 i;
    if (I2caRegs.I2CSTR.bit.BB == 1)
@@ -206,13 +206,13 @@ Uint16 ReadData( Uint16 SlaveAddress, Uint16 RomAddress,Uint16 number, Uint16  *
  *  @parameter              SlaveAddress：从机地址；  regaddress：寄存器地址； bitNum：某一位；  data：写入数据
  *  @return_value           无
  */
-void IICwriteBit(Uint16 slaveaddress, Uint16 regaddress, Uint8 bitNum, Uint8 data)
+void IICwriteBit(Uint16 slaveaddress, Uint16 regaddress, Uint16 bitNum, Uint16 data)
 {
     Uint16 a;
-    Uint8 b;
+    Uint16 b;
     DELAY_US(50);
     ReadData(slaveaddress,regaddress,1,&a);
-    b=(Uint8 )(a&0xff);
+    b=(Uint16 )(a&0xff);
     b = (data != 0) ? (b | (1 << bitNum)) : (b & ~(1 << bitNum));
     DELAY_US(50);
     WriteData(slaveaddress,regaddress,1,&b);
@@ -225,14 +225,14 @@ void IICwriteBit(Uint16 slaveaddress, Uint16 regaddress, Uint8 bitNum, Uint8 dat
  *  @parameter              SlaveAddress：从机地址；  regaddress：寄存器地址； bitStart：开始位；  length：长度；data：写入数据
  *  @return_value           无
  */
-void IICwriteBits(Uint16 slaveaddress,Uint16 regaddress,Uint8 bitStart,Uint8 length,Uint8 data)
+void IICwriteBits(Uint16 slaveaddress,Uint16 regaddress,Uint16 bitStart,Uint16 length,Uint16 data)
 {
 
-    Uint8 b,mask;
+    Uint16 b,mask;
     Uint16 a;
     DELAY_US(50);
     ReadData(slaveaddress,regaddress,1,&a);
-    b=(Uint8 )(a&0xff);
+    b=(Uint16 )(a&0xff);
     mask = (0xFF << (bitStart + 1)) | 0xFF >> ((8 - bitStart) + length - 1);
     data <<= (8 - length);
     data >>= (7 - bitStart);
