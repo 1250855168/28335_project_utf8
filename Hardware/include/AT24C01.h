@@ -9,7 +9,7 @@
 #define HARDWARE_INCLUDE_AT24C01_H_
 
 #include"DSP2833x_Project.h"
-#include<iic.h>
+
 
 /**
  *  @brief              AT24C01的初始化

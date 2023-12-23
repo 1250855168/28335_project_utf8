@@ -28,7 +28,6 @@ Hardware/src/AT24C01.obj: E:/28335_project_utf8/Lib/include/DSP2833x_ePwm_define
 Hardware/src/AT24C01.obj: E:/28335_project_utf8/Lib/include/DSP2833x_Dma_defines.h
 Hardware/src/AT24C01.obj: E:/28335_project_utf8/Lib/include/DSP2833x_I2C_defines.h
 Hardware/src/AT24C01.obj: E:/28335_project_utf8/Lib/include/DSP2833x_DefaultISR.h
-Hardware/src/AT24C01.obj: E:/28335_project_utf8/Hardware/include/iic.h
 
 ../Hardware/src/AT24C01.c:
 
@@ -85,6 +84,4 @@ E:/28335_project_utf8/Lib/include/DSP2833x_Dma_defines.h:
 E:/28335_project_utf8/Lib/include/DSP2833x_I2C_defines.h:
 
 E:/28335_project_utf8/Lib/include/DSP2833x_DefaultISR.h:
-
-E:/28335_project_utf8/Hardware/include/iic.h:
 
