@@ -77,7 +77,7 @@ void OLED_OFF(void);
 *  @parameter              无
 *  @return_value           无
 */
-void OLED_ShowStr(unsigned char x,unsigned char y,unsigned char ch[],unsigned TextSize);
+void OLED_ShowStr( char x, char y, char ch[],char TextSize);
 
 
 #endif /* HARDWARE_INCLUDE_OLED_H_ */

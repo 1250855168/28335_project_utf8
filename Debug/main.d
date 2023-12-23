@@ -1,8 +1,6 @@
 # FIXED
 
 main.obj: ../main.c
-main.obj: E:/28335_project_utf8/Hardware/include/button.h
-main.obj: E:/28335_project_utf8/Hardware/include/epwm_led.h
 main.obj: E:/28335_project_utf8/Lib/include/DSP2833x_Project.h
 main.obj: E:/28335_project_utf8/Lib/include/DSP2833x_Device.h
 main.obj: E:/28335_project_utf8/Lib/include/DSP2833x_Adc.h
@@ -29,6 +27,8 @@ main.obj: E:/28335_project_utf8/Lib/include/DSP2833x_ePwm_defines.h
 main.obj: E:/28335_project_utf8/Lib/include/DSP2833x_Dma_defines.h
 main.obj: E:/28335_project_utf8/Lib/include/DSP2833x_I2C_defines.h
 main.obj: E:/28335_project_utf8/Lib/include/DSP2833x_DefaultISR.h
+main.obj: E:/28335_project_utf8/Hardware/include/button.h
+main.obj: E:/28335_project_utf8/Hardware/include/epwm_led.h
 main.obj: E:/28335_project_utf8/Hardware/include/led.h
 main.obj: E:/28335_project_utf8/Hardware/include/sci.h
 main.obj: E:/28335_project_utf8/Hardware/include/WatchDog.h
@@ -41,13 +41,10 @@ main.obj: E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/stdarg
 main.obj: E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/sys/_types.h
 main.obj: E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/sys/cdefs.h
 main.obj: E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/machine/_types.h
-main.obj: E:/28335_project_utf8/Hardware/include/w25q64.h
+main.obj: E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/string.h
+main.obj: E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/xlocale/_string.h
 
 ../main.c:
-
-E:/28335_project_utf8/Hardware/include/button.h:
-
-E:/28335_project_utf8/Hardware/include/epwm_led.h:
 
 E:/28335_project_utf8/Lib/include/DSP2833x_Project.h:
 
@@ -101,6 +98,10 @@ E:/28335_project_utf8/Lib/include/DSP2833x_I2C_defines.h:
 
 E:/28335_project_utf8/Lib/include/DSP2833x_DefaultISR.h:
 
+E:/28335_project_utf8/Hardware/include/button.h:
+
+E:/28335_project_utf8/Hardware/include/epwm_led.h:
+
 E:/28335_project_utf8/Hardware/include/led.h:
 
 E:/28335_project_utf8/Hardware/include/sci.h:
@@ -125,5 +126,7 @@ E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/sys/cdefs.h:
 
 E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/machine/_types.h:
 
-E:/28335_project_utf8/Hardware/include/w25q64.h:
+E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/string.h:
+
+E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/xlocale/_string.h:
 
