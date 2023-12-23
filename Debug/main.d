@@ -34,6 +34,13 @@ main.obj: E:/28335_project_utf8/Hardware/include/sci.h
 main.obj: E:/28335_project_utf8/Hardware/include/WatchDog.h
 main.obj: E:/28335_project_utf8/Hardware/include/oled.h
 main.obj: E:/28335_project_utf8/Hardware/include/spi_o.h
+main.obj: E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/stdio.h
+main.obj: E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/_ti_config.h
+main.obj: E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/linkage.h
+main.obj: E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/stdarg.h
+main.obj: E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/sys/_types.h
+main.obj: E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/sys/cdefs.h
+main.obj: E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/machine/_types.h
 main.obj: E:/28335_project_utf8/Hardware/include/w25q64.h
 
 ../main.c:
@@ -103,6 +110,20 @@ E:/28335_project_utf8/Hardware/include/WatchDog.h:
 E:/28335_project_utf8/Hardware/include/oled.h:
 
 E:/28335_project_utf8/Hardware/include/spi_o.h:
+
+E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/stdio.h:
+
+E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/_ti_config.h:
+
+E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/linkage.h:
+
+E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/stdarg.h:
+
+E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/sys/_types.h:
+
+E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/sys/cdefs.h:
+
+E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/machine/_types.h:
 
 E:/28335_project_utf8/Hardware/include/w25q64.h:
 

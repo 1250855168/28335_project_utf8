@@ -14,6 +14,7 @@
 #include"DSP2833x_Project.h"
 #include<spi_o.h>
 #include<w25q64.h>
+#include<stdio.h>
 
 
 #define true 1
@@ -26,6 +27,26 @@ extern Uint16 RamfuncsRunStart;
 
 Uint16 PWM_count=0;
 Uint16 PWM_direction=0;
+
+#define BufferSize 			16
+ 
+ 
+#define  FLASH_WriteAddress     0x00000
+#define  FLASH_ReadAddress      FLASH_WriteAddress
+#define  FLASH_SectorToErase    FLASH_WriteAddress
+ 
+void arr_split(Uint32 *p,Uint32 *q);
+ 
+//发送缓冲区初始化
+Uint32 Tx_Buffer[BufferSize] = {0};
+Uint32 Rx_Buffer[BufferSize] = {0};
+ 
+//Uint32 Tx_Buffer1[BufferSize*2] = {0};
+//Uint32 Rx_Buffer1[BufferSize*2] = {0};
+ 
+ 
+Uint32 DeviceID=0;
+Uint32 FlashID=0;
 
 
 
@@ -340,38 +361,32 @@ void main(void){
 
     //spi  oled  flash
 
-    spi_init();
+    Uint16 i=0;
+ 
+	SPI_Init();
+ 
+ 
+	/* 获取 Flash Device ID */
+	DeviceID = FLASH_ReadDeviceID();
+	DELAY_US(20);
+	FlashID = FLASH_ReadJEDE_ID();
 
-    WriteDataSpi(0x9090);
+	for(i=0;i<BufferSize;i++)
+	{
+		Tx_Buffer[i]=1;
+		Rx_Buffer[i]=0;
+	}
+ 
+	if(FlashID == SPI_FLASH_ID)
+	{
+		//扇区擦除
+		FLASH_32KErase(FLASH_SectorToErase);
 
-    WriteDataSpi(0x9090);
+		SPI_FLASH_BufferWrite(Tx_Buffer,FLASH_WriteAddress,BufferSize);
 
-//    ReadMfrDeviceID_SPI();
-//
-//    WriteDataSpi(0x9000);
-//
-//    WriteDataSpi(0x0000);
-//
+		SPI_FLASH_BufferRead(Rx_Buffer,FLASH_ReadAddress,BufferSize);
 
-    //can
-//     w25q64_gpio_init();
-//
-//     SPI_Send_2Byte(0x0101);
-//     SPI_Send_2Byte(0x0101);
-//    Uint16 data;
-//    Uint16 t = 0x0101;
-//    W25Q64_PageWrite(0x00000001,&t,1);
-//
-//    W25Q64_ReadData(0x00000001,&data,1);
-
-//     while(1){
-//
-//         SPI_Send_2Byte(0x0101);
-//         SPI_Send_2Byte(0x0101);
-//
-//         DELAY_US(1000);
-//
-//     }
+	}
 
 
 
