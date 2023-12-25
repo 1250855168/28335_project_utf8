@@ -9,7 +9,7 @@
 #define HARDWARE_INCLUDE_DISTANCE_MEASUREMENT_H_
 
 
-#include "DSP28x_Project.h"
+#include "DSP2833x_Project.h"
 
 /**
  * 初始化ECAP
@@ -18,9 +18,9 @@
 void Init_ECap1(void);
 
 /**
- * 读取测量距离发送给串口
+ * 读取测量距离
 */
-void ReadDistance(void);
+Uint32 ReadDistance(void);
 
 
 #endif /* HARDWARE_INCLUDE_DISTANCE_MEASUREMENT_H_ */

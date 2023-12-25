@@ -43,6 +43,7 @@ main.obj: E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/sys/cd
 main.obj: E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/machine/_types.h
 main.obj: E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/string.h
 main.obj: E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/xlocale/_string.h
+main.obj: E:/28335_project_utf8/Hardware/include/distance_measurement.h
 
 ../main.c:
 
@@ -129,4 +130,6 @@ E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/machine/_types.h
 E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/string.h:
 
 E:/ccstdio10/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/xlocale/_string.h:
+
+E:/28335_project_utf8/Hardware/include/distance_measurement.h:
 

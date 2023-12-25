@@ -15,6 +15,7 @@
 #include <spi_o.h>
 #include <stdio.h>
 #include <string.h>
+#include<distance_measurement.h>
 
 #define true 1
 #define false 0
@@ -36,6 +37,8 @@ Uint16 PWM_direction = 0;
 // 发送缓冲区初始化
 Uint32 Tx_Buffer[BufferSize] = {0};
 Uint32 Rx_Buffer[BufferSize] = {0};
+
+Uint32 cap_val;//用来测距离
 
 void decimalToHex(Uint32 decimal, char *hexString)
 {
@@ -248,6 +251,19 @@ interrupt void epwm1_isr(void)
 //   PieCtrlRegs.PIEACK.all = PIEACK_GROUP8;
 //}
 
+/**
+ *  @brief                  ECAP1中断服务函数
+ *  @parameter                  无
+ *  @return_value               无
+ */
+__interrupt void Ecap1_isr(void)
+{
+    PieCtrlRegs.PIEACK.all = PIEACK_GROUP4; // 清除CAP1的PIE中断标志
+    ECap1Regs.ECCLR.bit.INT = 1;      // 清除ECap1中断标志位
+    ECap1Regs.ECCLR.bit.CEVT2 = 1;    // 清除事件2标志位
+    cap_val=(int32)ECap1Regs.CAP2 - (int32)ECap1Regs.CAP1;   // 计算脉冲
+}
+
 void main(void)
 {
 
@@ -314,8 +330,8 @@ void main(void)
     //    InitWatchDog();
     //
     //
-    //    //sci
-    //    Sci_Init();
+       //sci
+       //Sci_Init();
 
     // epwm  fan led
 
@@ -345,6 +361,21 @@ void main(void)
     //    ERTM;
 
     // ecap distance_measurement  cap_graph
+
+    EALLOW;
+    PieVectTable. ECAP1_INT = &Ecap1_isr;   // ECAP1_INT的中断映射
+    EDIS;
+
+    Init_ECap1();
+
+    Uint32 distance;
+    while (1)
+    {
+        distance = ReadDistance();
+        OLED_ShowStr(1, 3, distance, 1);
+        DELAY_US(200);
+    }
+    
 
     // i2c
 
@@ -418,4 +449,8 @@ void main(void)
     //
     //		SPI_FLASH_BufferRead(Rx_Buffer,FLASH_ReadAddress,BufferSize);
     //	}
+
+
+    //can
+    
 }
