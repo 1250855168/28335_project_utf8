@@ -27,7 +27,7 @@ void InitECap1Gpio(){
  // Comment out other unwanted lines.
 
     GpioCtrlRegs.GPAQSEL1.bit.GPIO5 = 0;    // Synch to SYSCLKOUT GPIO5 (CAP1)
-  // GpioCtrlRegs.GPAQSEL2.bit.GPIO24 = 0;   // Synch to SYSCLKOUT GPIO24 (CAP1)
+  //GpioCtrlRegs.GPAQSEL2.bit.GPIO24 = 0;   // Synch to SYSCLKOUT GPIO24 (CAP1)
  // GpioCtrlRegs.GPBQSEL1.bit.GPIO34 = 0;   // Synch to SYSCLKOUT GPIO34 (CAP1)
 
  /* Configure eCAP-1 pins using GPIO regs*/
@@ -50,8 +50,8 @@ void Init_ECap1(void)
 {
     InitECap1Gpio();
     EALLOW;
-    GpioCtrlRegs.GPAMUX1.bit.GPIO0 = 0; // 普通IO模式
-    GpioCtrlRegs.GPADIR.bit.GPIO0 = 1;  // 配置成输出
+    GpioCtrlRegs.GPAMUX1.bit.GPIO1 = 0; // 普通IO模式
+    GpioCtrlRegs.GPADIR.bit.GPIO1 = 1;  // 配置成输出
     EDIS;
 
     ECap1Regs.ECEINT.all = 0x0000; // 关闭所有的CAP中断
@@ -81,9 +81,9 @@ void Init_ECap1(void)
  */
 Uint32 ReadDistance(void)
 {
-    GpioDataRegs.GPASET.bit.GPIO0 = 1;   // Trig引脚输出高电平
-    DELAY_US(15);                        // 至少10us，本实验给15us
-    GpioDataRegs.GPACLEAR.bit.GPIO0 = 1; // Trig引脚输出低
+    GpioDataRegs.GPASET.bit.GPIO1 = 1;   // Trig引脚输出高电平
+    DELAY_US(1);                        // 至少10us，本实验给15us
+    GpioDataRegs.GPACLEAR.bit.GPIO1 = 1; // Trig引脚输出低
     Uint32 Distan;
     Distan = cap_val * 170 / 150000;     // 计算距离，此处单位为mm
     return Distan;

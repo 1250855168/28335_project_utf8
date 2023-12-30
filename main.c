@@ -28,7 +28,7 @@ extern Uint16 RamfuncsRunStart;
 Uint16 PWM_count = 0;
 Uint16 PWM_direction = 0;
 
-#define BufferSize 16
+#define BufferSize 8
 
 #define FLASH_WriteAddress 0x00000
 #define FLASH_ReadAddress FLASH_WriteAddress
@@ -40,7 +40,7 @@ Uint32 Rx_Buffer[BufferSize] = {0};
 
 Uint32 cap_val;//用来测距离
 
-void decimalToHex(Uint32 decimal, char *hexString)
+void decimalToHex(Uint32 decimal, char *hexString,Uint16 num)
 {
     int remainder;
     int i = 0;
@@ -54,7 +54,7 @@ void decimalToHex(Uint32 decimal, char *hexString)
 
     while (decimal != 0)
     {
-        remainder = decimal % 16;
+        remainder = decimal % num;
         if (remainder < 10)
         {
             hexString[i] = remainder + '0';
@@ -63,7 +63,7 @@ void decimalToHex(Uint32 decimal, char *hexString)
         {
             hexString[i] = remainder - 10 + 'A';
         }
-        decimal = decimal / 16;
+        decimal = decimal / num;
         i++;
     }
 
@@ -357,24 +357,7 @@ void main(void)
     //    IER |= M_INT3;//使能INT3中断
     //    PieCtrlRegs.PIEIER3.bit.INTx1 = 1;//使能ePWM1中断
     //
-    //    EINT;
-    //    ERTM;
 
-    // ecap distance_measurement  cap_graph
-
-    EALLOW;
-    PieVectTable. ECAP1_INT = &Ecap1_isr;   // ECAP1_INT的中断映射
-    EDIS;
-
-    Init_ECap1();
-
-    Uint32 distance;
-    while (1)
-    {
-        distance = ReadDistance();
-        OLED_ShowStr(1, 3, distance, 1);
-        DELAY_US(200);
-    }
     
 
     // i2c
@@ -404,35 +387,62 @@ void main(void)
     //    DELAY_US(100000);
     //    OLED_ShowStr(1,2,ch,2);
 
+    // ecap distance_measurement  cap_graph
+
+    EALLOW;
+    PieVectTable. ECAP1_INT = &Ecap1_isr;   // ECAP1_INT的中断映射
+    EDIS;
+
+    Init_ECap1();
+
+    Uint32 distance;
+    char temp[8];
+    char PrintfDistance[16];
+
+    IER |= M_INT4;  //使能第一组中断
+    PieCtrlRegs.PIEIER4.bit.INTx1 = 1; //使能第四组中断里的第一个中断--CAP1中断
+
+/* 第五步：添加用户功能具体代码*/
+    EINT;
+    ERTM;
+    while (1)
+    {
+        distance = ReadDistance();
+        decimalToHex(distance,temp,10);
+        sprintf(PrintfDistance, "distance:%smm",temp);
+        OLED_ShowStr(1, 3,PrintfDistance, 1);
+        DELAY_US(10);
+    }
+
     // adc-DMA  Temp Lighting
 
     // spi  flash
 
-    SPI_Init();
-
-    /* 获取 Flash Device ID */
-    Uint32 DeviceID = 0;
-    Uint32 FlashID = 0;
-    DeviceID = FLASH_ReadDeviceID();
-    DELAY_US(20);
-    FlashID = FLASH_ReadJEDE_ID();
-
-    char s[16] = {0};
-
-    char Device[] = "DeviceID:";
-
-    char t[16] = {0};
-    decimalToHex(DeviceID, t);
-    sprintf(s, "%s0x%s", Device, t);
-    OLED_ShowStr(1, 1, s, 1);
-
-    DELAY_US(1000);
-     char JEDE[] = "JEDE_ID:";
-    memset(t, 0, 16);
-    decimalToHex(FlashID, t);
-    sprintf(s, "%s0x%s", JEDE, t);
-
-    OLED_ShowStr(1, 2, s, 1);
+//    SPI_Init();
+//
+//    /* 获取 Flash Device ID */
+//    Uint32 DeviceID = 0;
+//    Uint32 FlashID = 0;
+//    DeviceID = FLASH_ReadDeviceID();
+//    DELAY_US(20);
+//    FlashID = FLASH_ReadJEDE_ID();
+//
+//    char s[num] = {0};
+//
+//    char Device[] = "DeviceID:";
+//
+//    char t[num] = {0};
+//    decimalToHex(DeviceID, t);
+//    sprintf(s, "%s0x%s", Device, t);
+//    OLED_ShowStr(1, 1, s, 1);
+//
+//    DELAY_US(1000);
+//     char JEDE[] = "JEDE_ID:";
+//    memset(t, 0, num);
+//    decimalToHex(FlashID, t);
+//    sprintf(s, "%s0x%s", JEDE, t);
+//
+//    OLED_ShowStr(1, 2, s, 1);
 
     //	for(i=0;i<BufferSize;i++)
     //	{
